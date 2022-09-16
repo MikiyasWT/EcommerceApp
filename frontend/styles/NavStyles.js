@@ -16,7 +16,7 @@ export const NavItems = Styled.div`
 display: flex;
 align-items:center;
 justify-content:space-around;
-
+cursor:pointer;
 div {
     margin-left:3rem;
     display: flex;

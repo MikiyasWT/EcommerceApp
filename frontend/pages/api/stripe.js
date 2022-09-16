@@ -1,9 +1,18 @@
 import Stripe from "stripe"
+import { getSession, GetSession } from "@auth0/nextjs-auth0";
+
 const birr="name";
 const fname="nabe";
 const stripe = new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`);
 
 export default async function handler(req,res){
+ const session = getSession(req,res);
+ const user = session?.user;
+ //stripeId is used to see if user has previously purchased if so he is going to have an stripeId
+ //the next time he comes back to purchase more no need to assign or create new Id
+ //we can use the previous strioed id as customer
+ const stripeId = user['http://localhost:3000/stripe_customer_id'];
+
 if(req.method === "POST"){
    try {
     
@@ -11,6 +20,7 @@ if(req.method === "POST"){
     const session = await stripe.checkout.sessions.create({
         submit_type: 'pay',
         mode:'payment',
+        customer:stripeId,
         payment_method_types:['card'],
         shipping_address_collection:{
             allowed_countries:['US','CA','GB','DE']
