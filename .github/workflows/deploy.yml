@@ -16,15 +16,11 @@ jobs:
       
       # Intall and run backend
       - run: echo "Working on the backend"
-      - run: cd ./backend
-      - run: npm install
-      - run: npm run dev&
-      - run: cd ..
+      - run: npm run install --prefix ./backend
+      - run: npm run develop  --prefix ./backend &
       # Intall and run Frontend
-      - run: cd ./frontend
-      - run: npm install
-      - run: npm run develop&
-      - run: cd ..
+      - run: npm install --prefix ./frontend
+      - run: npm run develop --prefix ./frontend
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
