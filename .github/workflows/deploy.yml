@@ -16,7 +16,7 @@ jobs:
       
       # Intall and run backend
       - run: echo "Working on the backend"
-      - run: npm run install --prefix ./backend
+      - run: npm  install --prefix ./backend
       - run: npm run develop  --prefix ./backend &
       # Intall and run Frontend
       - run: npm install --prefix ./frontend
