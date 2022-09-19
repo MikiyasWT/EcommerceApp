@@ -15,15 +15,15 @@ jobs:
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       
       # NPM install 
-      - run: npm install --prefix ./backend
-      - run: npm install --prefix ./frontend
+      - run: yarn install --prefix ./backend
+      - run: yarn install --prefix ./frontend
 
       # NPM run
-      - run: npm run build --prefix ./backend
-      - run: npm run build --prefix ./frontend
+      - run: yarn  build --prefix ./backend
+      - run: yarn  build --prefix ./frontend
 
-      - run: npm run start --prefix ./backend
-      - run: npm run start --prefix ./frontend
+      - run: yarn  start --prefix ./backend
+      - run: yarn  start --prefix ./frontend
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
