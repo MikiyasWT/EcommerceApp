@@ -1,0 +1,33 @@
+name: Deploy on AWS
+
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  docker-build:
+    runs-on: self-hosted
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      
+      # Intall and run backend
+      - run: echo "Working on the backend"
+      - run: cd ./backend
+      - run: npm install
+      - run: npm run dev&
+      - run: cd ..
+      # Intall and run Frontend
+      - run: cd ./frontend
+      - run: npm install
+      - run: npm run develop&
+      - run: cd ..
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
+    # - uses: actions/checkout@v3
+    # - name: Re Build the Docker image
+# z
