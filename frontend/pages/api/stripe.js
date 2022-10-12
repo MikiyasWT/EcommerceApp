@@ -9,7 +9,7 @@ export default async function handler(req,res){
  const session = getSession(req,res);
  const user = session?.user;
   if(user){
-       //stripeId is used to see if user has previously purchased if so he is going to have an stripeId
+ //stripeId is used to see if user has previously purchased if so he is going to have an stripeId
  //the next time he comes back to purchase more no need to assign or create new Id
  //we can use the previous strioed id as customer
  const stripeId = user['http://localhost:3000/stripe_customer_id'];
