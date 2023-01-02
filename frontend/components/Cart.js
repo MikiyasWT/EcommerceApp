@@ -69,7 +69,7 @@ export default function Cart(){
             </EmptyStyle>
             }
             <Cards
-                 layout
+                 Layout
                  variants={cards}
                  initial="hidden"
                  animate="show"
@@ -79,7 +79,7 @@ export default function Cart(){
                         cartItems.map((item) => {
                             return (
                                 <Card 
-                                    layout
+                                    Layout
                                     variants={card}
                                     key={item.slug}>
                                 <img src={item.image.data.attributes.formats.thumbnail.url} alt={item.title} />
